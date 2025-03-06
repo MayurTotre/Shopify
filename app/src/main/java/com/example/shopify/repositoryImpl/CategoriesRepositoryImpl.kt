@@ -1,5 +1,6 @@
 package com.example.shopify.repositoryImpl
 
+import android.util.Log
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import com.example.shopify.model.response.CategoriesResponse
 import com.example.shopify.repository.CategoryRepository
@@ -20,7 +21,7 @@ class CategoriesRepositoryImpl @Inject constructor(
                     Result.success(it)
                 } ?: Result.failure(Exception("Response body is null"))
             } else {
-                Result.failure(Exception("API call failed with code: ${response.code()}"))
+                Result.failure(Exception("API call failed with code: ${response.code()}======${response.message()}"))
             }
         } catch (e: Exception) {
             Result.failure(e)

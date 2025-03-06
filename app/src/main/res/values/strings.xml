@@ -11,6 +11,7 @@
     <string name="dontAcc">don\'t have an account</string>
     <string name="alreadyAcc">already have an account</string>
     <string name="clickHere"><b>Click here</b></string>
+    <string name="category"><b>Category</b></string>
 
 
 </resources>
