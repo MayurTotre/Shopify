@@ -1,4 +1,4 @@
-package com.example.shopify.services
+package com.example.shopify.services.remote
 
 import com.example.shopify.model.request.CreateUserRequest
 import com.example.shopify.model.request.LoginUserRequest

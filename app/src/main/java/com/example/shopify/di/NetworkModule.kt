@@ -1,8 +1,8 @@
 package com.example.shopify.di
 
 import com.example.shopify.BuildConfig
-import com.example.shopify.services.CategoriesApiService
-import com.example.shopify.services.UserRegisterationApiService
+import com.example.shopify.services.remote.CategoriesApiService
+import com.example.shopify.services.remote.UserRegisterationApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,13 +42,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideUserRegisterationApiService(retrofit: Retrofit): UserRegisterationApiService{
+    fun provideUserRegisterationApiService(retrofit: Retrofit): UserRegisterationApiService {
         return retrofit.create(UserRegisterationApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideCategoryApiService(retrofit: Retrofit): CategoriesApiService{
+    fun provideCategoryApiService(retrofit: Retrofit): CategoriesApiService {
         return retrofit.create(CategoriesApiService::class.java)
     }
 

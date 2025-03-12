@@ -6,9 +6,7 @@ import com.example.shopify.model.response.CreateUserResponse
 import com.example.shopify.model.response.ImageToUrlResponse
 import com.example.shopify.model.response.LoginUserResponse
 import com.example.shopify.repository.UserRepository
-import com.example.shopify.services.UserRegisterationApiService
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import com.example.shopify.services.remote.UserRegisterationApiService
 import okhttp3.MultipartBody
 import javax.inject.Inject
 
