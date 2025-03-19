@@ -23,5 +23,39 @@
         <action
             android:id="@+id/action_homeFragment_to_wishListFragment"
             app:destination="@id/wishListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_displayCartItemsFragment"
+            app:destination="@id/displayCartItemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.shopify.view.fragments.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" />
+    <fragment
+        android:id="@+id/displayCartItemsFragment"
+        android:name="com.example.shopify.view.fragments.DisplayCartItemsFragment"
+        android:label="fragment_display_cart_items"
+        tools:layout="@layout/fragment_display_cart_items" >
+        <action
+            android:id="@+id/action_displayCartItemsFragment_to_addressListFragment"
+            app:destination="@id/addressListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.shopify.view.fragments.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" />
+    <fragment
+        android:id="@+id/addressListFragment"
+        android:name="com.example.shopify.view.fragments.AddressListFragment"
+        android:label="fragment_address_list"
+        tools:layout="@layout/fragment_address_list" >
+        <action
+            android:id="@+id/action_addressListFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
     </fragment>
 </navigation>

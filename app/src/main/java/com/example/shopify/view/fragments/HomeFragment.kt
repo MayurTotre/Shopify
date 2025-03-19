@@ -20,16 +20,21 @@ import com.example.shopify.databinding.FragmentLoginBinding
 import com.example.shopify.databinding.FragmentWishListBinding
 import com.example.shopify.interfaces.OnClickDoAction
 import com.example.shopify.interfaces.OnClickGetDetails
+import com.example.shopify.interfaces.OnClickGetProductId
+import com.example.shopify.model.response.CategoriesResponseItem
 import com.example.shopify.model.response.ProductsResponseItem
 import com.example.shopify.viewmodel.CategoriesViewModel
+import com.example.shopify.viewmodel.DisplayProductsViewModel
 import com.example.shopify.viewmodel.WishListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), OnClickGetDetails, OnClickDoAction {
+class HomeFragment : Fragment(), OnClickGetDetails, OnClickDoAction, OnClickGetProductId {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: CategoriesViewModel by viewModels()
     private val wishListViewModel: WishListViewModel by viewModels()
+    private val displayProductViewModel: DisplayProductsViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,7 +64,7 @@ class HomeFragment : Fragment(), OnClickGetDetails, OnClickDoAction {
         viewModel.products.observe(viewLifecycleOwner) { result ->
             result.onSuccess { productResponse ->
                 val data = productResponse
-                val productsAdapter = ProductsAdapter(productResponse, this)
+                val productsAdapter = ProductsAdapter(productResponse, this, this)
                 binding.rvProducts.layoutManager = GridLayoutManager(requireContext(), 2)
                 binding.rvProducts.adapter = productsAdapter
                 Log.d("Products", "${productResponse}")
@@ -69,14 +74,23 @@ class HomeFragment : Fragment(), OnClickGetDetails, OnClickDoAction {
             }
         }
 
+
+
     }
 
-    override fun getProductById(id: Int) {
-        viewModel.products(id)
+    override fun getProductById(categoriesResponseItem: CategoriesResponseItem) {
+        viewModel.products(categoriesResponseItem.id)
     }
 
     override fun onCliCkDoAction(product: ProductsResponseItem) {
         wishListViewModel.addToWishList(product)
+    }
+
+    override fun onClickGetProductId(id: Int) {
+        val bundle = Bundle()
+        bundle.putInt("productId", id)
+
+        findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, bundle)
     }
 
 }

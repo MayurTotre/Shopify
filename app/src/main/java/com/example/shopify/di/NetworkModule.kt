@@ -2,6 +2,7 @@ package com.example.shopify.di
 
 import com.example.shopify.BuildConfig
 import com.example.shopify.services.remote.CategoriesApiService
+import com.example.shopify.services.remote.ProductDetailsApiService
 import com.example.shopify.services.remote.UserRegisterationApiService
 import dagger.Module
 import dagger.Provides
@@ -50,6 +51,12 @@ object NetworkModule {
     @Singleton
     fun provideCategoryApiService(retrofit: Retrofit): CategoriesApiService {
         return retrofit.create(CategoriesApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductDetailsRepository(retrofit: Retrofit): ProductDetailsApiService {
+        return retrofit.create(ProductDetailsApiService::class.java)
     }
 
 }

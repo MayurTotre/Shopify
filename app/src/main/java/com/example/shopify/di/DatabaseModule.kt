@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.shopify.model.response.ProductsResponse
 import com.example.shopify.model.response.ProductsResponseItem
+import com.example.shopify.services.local.AddToCartDao
+import com.example.shopify.services.local.AddressDao
 import com.example.shopify.services.local.ProductDB
 import com.example.shopify.services.local.WishListDao
 import dagger.Module
@@ -33,6 +35,18 @@ object DatabaseModule {
     @Singleton
     fun provideWishListDao(db: ProductDB): WishListDao {
         return db.addtoWishListDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddToCartDao(db: ProductDB): AddToCartDao {
+        return db.addToCartDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddressDetails(db: ProductDB): AddressDao {
+        return db.addressDao()
     }
 
 }

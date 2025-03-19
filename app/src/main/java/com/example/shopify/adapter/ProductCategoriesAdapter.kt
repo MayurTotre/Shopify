@@ -18,14 +18,14 @@ class ProductCategoriesAdapter(private val categoriesList: CategoriesResponse, p
     class ProductCategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryImage: ImageView = itemView.findViewById(R.id.img_category_item)
         val categoryText: TextView = itemView.findViewById(R.id.tv_category_name)
-        val card: CardView = itemView.findViewById(R.id.cardCategories)
+        val categoryCard: CardView = itemView.findViewById(R.id.cardCategories)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ProductCategoriesViewHolder {
-        val view =LayoutInflater.from(parent.context)
+        val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.category_adapter, parent, false)
         return ProductCategoriesViewHolder(view)
     }
@@ -40,20 +40,17 @@ class ProductCategoriesAdapter(private val categoriesList: CategoriesResponse, p
 
         holder.categoryText.text = categoriesData.name
 
-        onClieckDetails.getProductById(categoriesData.id)
+        onClieckDetails.getProductById(categoriesData)
 
-        holder.card.isSelected = position == selectedPosition
+        holder.categoryCard.isSelected = position == selectedPosition
 
         if (position == 0) {
-            onClieckDetails.getProductById(categoriesData.id)
+            onClieckDetails.getProductById(categoriesData)
         }
 
-        holder.card.setOnClickListener {
+        holder.categoryCard.setOnClickListener {
             val currentPosition = holder.adapterPosition
             if (currentPosition != RecyclerView.NO_POSITION && currentPosition != selectedPosition) {
-//                selectedPosition = currentPosition
-//                notifyDataSetChanged()
-//                listener.onItemClick(category)
 
                 val previousPosition = selectedPosition
                 selectedPosition = currentPosition
@@ -61,7 +58,7 @@ class ProductCategoriesAdapter(private val categoriesList: CategoriesResponse, p
                 notifyItemChanged(previousPosition)
                 notifyItemChanged(selectedPosition)
 
-                onClieckDetails.getProductById(categoriesData.id)
+                onClieckDetails.getProductById(categoriesData)
             }
         }
     }
