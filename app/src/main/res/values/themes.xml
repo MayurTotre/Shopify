@@ -1,9 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Shopify" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/dark_grey</item>
+        <item name="color">@color/grey</item>
+        <item name="colorAccent">@color/light_grey</item>
+        <item name="colorButtonNormal">@color/darkest_grey</item>
+    </style>
+    
+    <style name="Theme.Shopify" parent="Base.Theme.Shopify" />
+
+    <style name="Theme.MyApp.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.Shopify</item>
     </style>
 
-    <style name="Theme.Shopify" parent="Base.Theme.Shopify" />
+
 </resources>
